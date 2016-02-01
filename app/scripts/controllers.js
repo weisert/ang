@@ -2,7 +2,7 @@
 
 angular.module('confusionApp')
 
-    .controller('MenuController', ['$scope', 'menuFactory', function($scope, menuFactory) {
+    .controller('MenuController', ['$scope', 'menuFactory', function ($scope, menuFactory) {
 
         $scope.tab = 1;
         $scope.filtText = '';
@@ -82,15 +82,15 @@ angular.module('confusionApp')
         };
     }])
 
-    .controller('DishDetailController', ['$scope', '$routeParams', 'menuFactory', function($scope, $routeParams, menuFactory) {
-        var dish = menuFactory.getDish(parseInt($routeParams.id,10));
+    .controller('DishDetailController', ['$scope', '$stateParams', 'menuFactory', function ($scope, $stateParams, menuFactory) {
+        var dish = menuFactory.getDish(parseInt($stateParams.id, 10));
         $scope.dish = dish;
     }])
 
     .controller('DishCommentController', ['$scope', function ($scope) {
 
         //Step 1: Create a JavaScript object to hold the comment from the form
-        $scope.comment = {author:"", rating: 5, comment:""}
+        $scope.comment = {author: "", rating: 5, comment: ""}
 
         $scope.submitComment = function () {
 
@@ -104,7 +104,7 @@ angular.module('confusionApp')
             $scope.commentForm.$setPristine();
 
             //Step 5: reset your JavaScript object that holds your comment
-            $scope.comment = {author:"", rating: 5, comment:""}
+            $scope.comment = {author: "", rating: 5, comment: ""}
         }
     }])
 
